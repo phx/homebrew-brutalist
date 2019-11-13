@@ -7,8 +7,8 @@ class Brutalist < Formula
   # depends_on "python" => "3.0"
 
   def install
-      # move 'brutalist.py' under #{prefix}/bin/
-      bin.install "brutalist.py" => "brutalist"
+    # move 'brutalist.py' under #{prefix}/bin/
+    bin.install "brutalist.py" => "brutalist"
   end
 
   test do
