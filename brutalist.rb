@@ -1,8 +1,8 @@
 class Brutalist < Formula
   desc "brutalist is a python3-based command-line tool for all platforms that can be used to generate quick and large word lists from 1 or more sample passwords provided by the user."
   homepage "https://github.com/phx/brutalist"
-  url "https://github.com/phx/homebrew-brutalist/archive/1.0.1.tar.gz"
-  sha256 "634eba6d4f3ccaf7e4981a645db2ada37b1eeb5c4f2b59a27cf49aa74692a802"
+  url "https://github.com/phx/homebrew-brutalist/archive/1.0.3.tar.gz"
+  sha256 "3390024e8a30ecb38a88ba91aec2d16445355bee6977fd5c49be19ec1127ffc5"
 
   depends_on "python" => "3.0"
 
