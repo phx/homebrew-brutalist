@@ -8,8 +8,7 @@ class HomebrewBrutalist < Formula
 
   def install
       # move 'brutalist.py' under #{prefix}/bin/
-      bin install "brutalist.py"
-      mv bin/"brutalist.py" bin/"brutalist"
+      bin.install "brutalist.py" => "brutalist"
   end
 
   test do
