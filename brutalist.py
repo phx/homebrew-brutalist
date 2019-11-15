@@ -28,30 +28,32 @@ def show_help():
     sys.exit()
 
 CHARACTERS = {
-        r'[Aa]': ['4', '@'],
-        r'[Bb]': ['3', '13'],
-        r'[Cc]': ['('],
-        r'[Dd]': ['[)'],
-        r'[Ee]': ['3'],
-        r'[Ff]': ['|='],
-        r'[Gg]': ['6'],
-        r'[Hh]': ['|-|'],
-        r'[Ii]': ['1', '|'],
-        r'[Jj]': ['.]'],
-        r'[Kk]': ['|<'],
-        r'[Ll]': ['1'],
-        r'[Mm]': ['|Y|'],
-        r'[Nn]': ['/V'],
-        r'[Oo]': ['0'],
-        r'[Pp]': ['|>'],
-        r'[Qq]': ['0'],
-        r'[Rr]': ['|2'],
-        r'[Ss]': ['5', '$'],
-        r'[Tt]': ['7', '+'],
-        r'[Uu]': ['_'],
-        r'[Xx]': ['}-{'],
-        r'[Yy]': ['`/'],
-        r'[Zz]': ['2']
+        r'[Aa]': ['A', 'a', '4', '@'],
+        r'[Bb]': ['B', 'b', '3', '13'],
+        r'[Cc]': ['C', 'c', '('],
+        r'[Dd]': ['D', 'd', '[)'],
+        r'[Ee]': ['E', 'e', '3'],
+        r'[Ff]': ['F', 'f', '|='],
+        r'[Gg]': ['G', 'g', '6'],
+        r'[Hh]': ['H', 'h', '|-|'],
+        r'[Ii]': ['I', 'i', '1', '|'],
+        r'[Jj]': ['J', 'j', '.]'],
+        r'[Kk]': ['K', 'k', '|<'],
+        r'[Ll]': ['L', 'l', '1'],
+        r'[Mm]': ['M', 'm', '|Y|'],
+        r'[Nn]': ['N', 'n', '/V'],
+        r'[Oo]': ['O', 'o', '0'],
+        r'[Pp]': ['P', 'p', '|>'],
+        r'[Qq]': ['Q', 'q', '0,'],
+        r'[Rr]': ['R', 'r', '|2'],
+        r'[Ss]': ['S', 's', '5', '$'],
+        r'[Tt]': ['T', 't', '7', '+'],
+        r'[Uu]': ['U', 'u', '[_]'],
+        r'[Vv]': ['V', 'v'],
+        r'[Ww]': ['W', 'w'],
+        r'[Xx]': ['X', 'x', '}-{'],
+        r'[Yy]': ['Y', 'y', '`/'],
+        r'[Zz]': ['Z', 'z', '2']
     }
 
 def resubs(spass):
@@ -82,52 +84,79 @@ def get_subs(ch, char):
             if lower_char == 'a':
                 subs.append(b + '4' + a)
                 subs.append(b + '@' + a)
+                resubs(b + '4' + a)
+                resubs(b + '@' + a)
             if lower_char == 'b':
                 subs.append(b + '3' + a)
                 subs.append(b + '13' + a)
+                resubs(b + '3' + a)
+                resubs(b + '13' + a)
             if lower_char == 'c':
                 subs.append(b + '(' + a)
+                resubs(b + '(' + a)
             if lower_char == 'd':
                 subs.append(b + '[)' + a)
+                resubs(b + '[)' + a)
             if lower_char == 'e':
                 subs.append(b + '3' + a)
+                resubs(b + '3' + a)
             if lower_char == 'f':
                 subs.append(b + '|=' + a)
+                resubs(b + '|=' + a)
             if lower_char == 'g':
                 subs.append(b + '6' + a)
+                resubs(b + '6' + a)
             if lower_char == 'h':
                 subs.append(b + '|-|' + a)
+                resubs(b + '|-|' + a)
             if lower_char == 'i':
                 subs.append(b + '|' + a)
                 subs.append(b + '1' + a)
+                resubs(b + '|' + a)
+                resubs(b + '1' + a)
             if lower_char == 'l':
                 subs.append(b + 'l' + a)
+                resubs(b + 'l' + a)
             if lower_char == 'm':
                 subs.append(b + '|Y|' + a)
+                resubs(b + '|Y|' + a)
             if lower_char == 'n':
                 subs.append(b + '/V' + a)
+                resubs(b + '/V' + a)
             if lower_char == 'o':
                 subs.append(b + '0' + a)
+                resubs(b + '0' + a)
             if lower_char == 'p':
                 subs.append(b + '|>' + a)
+                resubs(b + '|>' + a)
             if lower_char == 'q':
                 subs.append(b + '0,' + a)
+                resubs(b + '0,' + a)
             if lower_char == 'r':
                 subs.append(b + '|2' + a)
+                resubs(b + '|2' + a)
             if lower_char == 's':
                 subs.append(b + '5' + a)
                 subs.append(b + '$' + a)
+                resubs(b + '5' + a)
+                resubs(b + '$' + a)
             if lower_char == 't':
                 subs.append(b + '7' + a)
                 subs.append(b + '+' + a)
+                resubs(b + '7' + a)
+                resubs(b + '+' + a)
             if lower_char == 'u':
                 subs.append(b + '[_]' + a)
+                resubs(b + '[_]' + a)
             if lower_char == 'x':
                 subs.append(b + '}-{' + a)
+                resubs(b + '}-{' + a)
             if lower_char == 'y':
                 subs.append(b + '`/' + a)
+                resubs(b + '`/' + a)
             if lower_char == 'z':
                 subs.append(b + '2' + a)
+                resubs(b + '2' + a)
 
 
 if __name__ == '__main__':
