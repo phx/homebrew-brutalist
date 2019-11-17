@@ -1,6 +1,6 @@
 ![Platform: ALL](https://img.shields.io/badge/platform-ALL-green)
 ![Dependencies: python3+](https://img.shields.io/badge/dependencies-python3+-blue)
-![Version: 1.5.0](https://img.shields.io/badge/version-1.6.2-green)
+![Version: 1.5.0](https://img.shields.io/badge/version-1.6.5-green)
 ![Follow @rubynorails on Twitter](https://img.shields.io/twitter/follow/rubynorails?label=follow&style=social)
 
 # brutalist
@@ -8,8 +8,8 @@
 
 ### Use case:
 Let's say you come across an outdated password in an old credential dump, but the user has since updated their password (`password`) to `P@$$w0rd123!`.
-If fed the word `password`, `brutalist` can generate up to 6,013,440 unique custom combinations of that specific word.
-It can use various methods of leet speak substitution, as well as other common special character substitutions, suffixes, and special character additions -- all while keeping the order of the original characters in the password.
+If fed the word `password`, `brutalist` can generate up to a few million unique custom combinations for that specific word.
+`brutalist` uses various methods of leet speak substitution, as well as other common special character substitutions, suffixes, and special character additions -- all while keeping the order of the original characters in the password.
 
 ### Notes:
 Running without the `--limit-special`, `--limit-numbers`, or `--limit` options decreases the number of results to something manageable.
@@ -17,8 +17,6 @@ Running without the `--limit-special`, `--limit-numbers`, or `--limit` options d
 Running with the `--leet` option increases the number of results exponentially to something quite large.
 
 The time it takes to return the results depends on the initial password length.
-
-It takes approximately 15 seconds to 2 minutes to run the word `password` under normal conditions, depending on command line options.
 
 ## Install via Git:
 1. `git clone https://github.com/phx/brutalist.git`
@@ -64,14 +62,71 @@ Going forward, we will reference the command as `brutalist` -- just know that if
 - `stdin` from user input (outputs to `stdout`):
 `brutalist`[type your sample password(s), then hit `Ctrl-D`]
 
+### Runtime samples for using the password example "w":
+```
+---------------------------------------------------------
+$ time echo w | ./brutalist.py | wc -l
+   44440
+
+real    0m0.099s
+user    0m0.080s
+sys    0m0.018s
+---------------------------------------------------------
+$ time echo w | ./brutalist.py --leet | wc -l
+  155540
+
+real    0m0.250s
+user    0m0.225s
+sys    0m0.028s
+---------------------------------------------------------
+$ time echo w | ./brutalist.py --limit-special | wc -l
+   22220
+
+real    0m0.077s
+user    0m0.059s
+sys    0m0.019s
+---------------------------------------------------------
+$ time echo w | ./brutalist.py --limit-numbers | wc -l
+     780
+
+real    0m0.048s
+user    0m0.032s
+sys    0m0.018s
+---------------------------------------------------------
+$ time echo w | ./brutalist.py --limit | wc -l
+     400
+
+real    0m0.051s
+user    0m0.036s
+sys    0m0.017s
+---------------------------------------------------------
+```
+### 10 random samples from password example "boot":
+```
+$ time echo boot | ./brutalist.py --leet | sort -R | head -10
+13oOT225)
+3oO7721)
+BOO7791.
+130Ot814%
+b0O+538.
+B0OT059&
+13Oot786=
+3OOt899)
+3OO+631!
+B0O+313]
+
+real    1m40.766s
+user    1m41.305s
+sys    0m0.491s
+```
 
 ### Background
-This program is by no means perfect.  It's quick and dirty, and by no means optimized.  I started out in C before realizing that Python would do a much better job, and it's still extremely fast when it comes to generating these word lists.  Almost instant.
+I started out in C before realizing that Python would do a much better job, and it's still pretty fast when it comes to generating these word lists.
 
 I wrote this over the course of a few hours because it was something I had been thinking about that solved a particular use-case I had come across on multiple occasions, and while BurpSuite Pro offers some similar functionality, you have to fool around with it every time to get something close to what you want, as opposed to just running a simple command using `brutalist` . 
 
-### To-Do, Updates, and Contribution
-I plan to add the option to specify the special characters used in the suffix, which can greatly cut down on the number of permutations for those who need shorter lists.  There will be some permutations that are missing, which I may add code for at a later point.  If you want to contribute or clean up the code, feel free to submit a pull request.
+### Contribution
+If you want to contribute or help clean up and optimize some code, feel free to submit a pull request.
 
 ### Disclaimer
 By downloading and running this software, you agree to only use it for ethical purposes and also agree to be held fully liable and accountable for any damage or harm caused by using `brutalist`.
