@@ -4,7 +4,7 @@
 ![Follow @rubynorails on Twitter](https://img.shields.io/twitter/follow/rubynorails?label=follow&style=social)
 
 
-![brutalist](./brutalist.png?raw=true)
+![brutalist](https://raw.githubusercontent.com/phx/brutalist/master/brutalist.png)
 
 # brutalist
 `brutalist` is a python3-based command line tool for all platforms that can be used to generate quick and large word lists from one or more sample passwords provided by the user.
@@ -21,16 +21,18 @@ Running with the `--leet` option increases the number of results exponentially t
 
 The time it takes to return the results depends on the initial password length.
 
-## Install via Git:
-1. `git clone https://github.com/phx/brutalist.git`
-2. `cd brutalist`
-3. `sudo cp brutalist.py /usr/local/bin/brutalist`
-
-You can just as easily execute it where it stands or manually copy it elsewhere in your `$PATH`.
+## Install from PyPI:
+`pip3 install --upgrade brutalist`
 
 ## Install via Homebrew on MacOS:
-1. `brew tap phx/brutalist`
-2. `brew install brutalist`
+`brew install phx/brutalist/brutalist`
+
+## Install via Git:
+1. `git clone https://github.com/phx/brutalist`
+2. `cd brutalist`
+3. `sudo cp brutalist /usr/local/bin/`
+
+You can just as easily execute it where it stands or manually copy it elsewhere in your `$PATH`.
 
 ## Run:
 ```
@@ -48,13 +50,8 @@ Extended Options:
        -l | --limit                            limits both 3 digit numbers and special characters
             --leet                             includes all leet speak combinations (will increase size)
 ```
+
 ## Examples
-- From the downloaded git repo working directory:
- `./brutalist.py [a single password]`
-- Installed via `homebrew` or copied to your `$PATH` as `brutalist`:
-` brutalist [a single password]`
- 
-Going forward, we will reference the command as `brutalist` -- just know that if it's not in your `$PATH`, it will have to be run in-place as `./brutalist.py`.
 
 - `stdin`from pipe, `stdout` to a file:
 `cat small_list.txt | brutalist > huge_list.txt`
